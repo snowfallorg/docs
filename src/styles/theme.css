@@ -1,0 +1,84 @@
+:root {
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+
+  --text: var(--nord6);
+  --background: var(--nord0);
+  --background-elevated: var(--nord1);
+
+  --primary: var(--nord10);
+  --primary-text: var(--nord6);
+
+  --secondary: var(--nord15);
+  --secondary-text: var(--nord6);
+
+  --sl-color-text: var(--text);
+  --sl-color-accent-low: var(--primary);
+  --sl-color-accent: var(--primary);
+  --sl-color-accent-high: var(--primary);
+  --sl-color-white: var(--nord6);
+  --sl-color-gray-1: var(--nord6);
+  --sl-color-gray-2: var(--nord5);
+  --sl-color-gray-3: var(--nord4);
+  --sl-color-gray-4: var(--nord2);
+  --sl-color-gray-5: var(--nord1);
+  --sl-color-gray-6: var(--nord0);
+  --sl-color-blue: var(--nord9);
+  --sl-color-blue-low: var(--nord10);
+  --sl-color-black: var(--nord0);
+  --sl-icon-color: var(--text);
+  --sl-color-text-accent: var(--primary);
+  --sl-color-text-invert: var(--text);
+  --sl-color-asides-text-accent: var(--primary-text);
+
+  --sl-color-bg: var(--background);
+  --sl-color-bg-nav: var(--background-elevated);
+}
+
+:root[data-theme="light"] {
+  --text: var(--nord0);
+  --background: var(--nord6);
+  --background-elevated: white;
+
+  --sl-color-accent: var(--primary);
+  --sl-color-accent-high: var(--primary);
+  --sl-color-blue: var(--nord9);
+  --sl-color-blue-low: var(--nord10);
+  --sl-color-bg-nav: var(--background-elevated);
+  --sl-color-asides-text-accent: var(--primary-text);
+}
+
+.primary {
+  color: var(--primary-text) !important;
+  background: var(--primary) !important;
+  --sl-icon-color: var(--primary-text) !important;
+}
+
+.site-title {
+  color: var(--text) !important;
+}
+
+.starlight-aside__title,
+.starlight-aside__content {
+  color: var(--primary-text) !important;
+}
+
+.starlight-aside__title code,
+.starlight-aside__content code {
+  color: var(--text);
+  border-radius: 0.25rem;
+}
