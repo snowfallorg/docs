@@ -8,7 +8,6 @@ export default defineConfig({
       title: "Snowfall",
       customCss: ["./src/styles/theme.css"],
       social: {
-        discord: "https://discord.gg/",
         github: "https://github.com/snowfallorg",
       },
       sidebar: [
