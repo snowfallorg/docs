@@ -82,3 +82,8 @@
   color: var(--text);
   border-radius: 0.25rem;
 }
+
+nav > starlight-menu-button > button {
+  background-color: var(--background-elevated) !important;
+  box-shadow: none !important;
+}

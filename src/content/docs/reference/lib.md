@@ -272,6 +272,49 @@ packages, overlays, and shells specified by the [Flake Structure](#flake-structu
 }
 ```
 
+#### Snowfall Configuration
+
+Snowfall Lib supports configuring some functionality and interopability with other tools via
+the `snowfall` attribute passed to `mkLib`.
+
+```nix
+{
+	description = "My Flake";
+
+	inputs = {
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+
+		snowfall-lib = {
+			url = "github:snowfallorg/lib";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+	};
+
+	outputs = inputs:
+		# This is an example and in your actual flake you can use `snowfall-lib.mkFlake`
+		# directly unless you explicitly need a feature of `lib`.
+		let
+			lib = inputs.snowfall-lib.mkLib {
+				# You must pass in both your flake's inputs and the root directory of
+				# your flake.
+				inherit inputs;
+				src = ./.;
+
+				snowfall = {
+				namespace = "my-namespace";
+					meta = {
+						# Your flake's preferred name in the flake registry.
+						name = "my-flake";
+						# A pretty name for your flake.
+						title = "My Flake";
+					};
+				};
+			};
+		in
+			lib.mkFlake { };
+}
+```
+
 #### External Overlays And Modules
 
 You can apply overlays and modules from your flake's inputs with the following options.
@@ -292,11 +335,6 @@ You can apply overlays and modules from your flake's inputs with the following o
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-		nix-ld = {
-			url = "github:Mic92/nix-ld";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 	};
 
 	outputs = inputs:
@@ -313,17 +351,32 @@ You can apply overlays and modules from your flake's inputs with the following o
 			lib.mkFlake {
 				# Add overlays for the `nixpkgs` channel.
 				overlays = with inputs; [
-					home-manager.overlay
+					# my-inputs.overlays.my-overlay
 				];
 
-				# Add modules to all systems.
-				systems.modules = with inputs; [
-					nix-ld.nixosModules.nix-ld
+				# Add modules to all NixOS systems.
+				systems.modules.nixos = with inputs; [
+					# my-input.nixosModules.my-module
+				];
+
+				# Add modules to all Darwin systems.
+				systems.modules.darwin = with inputs; [
+					# my-input.darwinModules.my-module
 				];
 
 				# Add modules to a specific system.
 				systems.hosts.my-host = with inputs; [
-					nix-ld.nixosModules.nix-ld
+					# my-input.nixosModules.my-module
+				];
+
+				# Add modules to all homes.
+				homes.modules = with inputs; [
+					# my-input.homeModules.my-module
+				];
+
+				# Add modules to a specific home.
+				homes.users."my-user@my-host".modules = with inputs; [
+					# my-input.homeModules.my-module
 				];
 			};
 }

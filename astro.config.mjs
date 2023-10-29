@@ -25,6 +25,7 @@ export default defineConfig({
                 { label: "Homes", link: "/guides/lib/homes/" },
                 { label: "Library", link: "/guides/lib/library/" },
                 { label: "Shells", link: "/guides/lib/shells/" },
+                { label: "Generic", link: "/guides/lib/generic/" },
               ],
             },
             { label: "Reference", link: "/reference/lib/" },

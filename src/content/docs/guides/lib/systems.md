@@ -47,3 +47,48 @@ Now create the Nix file for the system at `systems/x86_64-linux/my-system/defaul
 This system will be made available on your flake’s `nixosConfigurations`, `darwinConfigurations`,
 or one of Snowfall Lib's virtual `*Configurations` outputs with the same
 name as the directory that you created.
+
+Systems can have additional `specialArgs` and `modules` configured within your call to `mkFlake`.
+See the following for an example which adds a NixOS module to a specific host and sets a
+custom value in `specialArgs`.
+
+```nix
+{
+	description = "My Flake";
+
+	inputs = {
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+
+		snowfall-lib = {
+			url = "github:snowfallorg/lib";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+	};
+
+	outputs = inputs:
+        inputs.snowfall-lib.mkFlake {
+            inherit inputs;
+            src = ./.;
+
+            # Add modules to all NixOS systems.
+            systems.modules.nixos = with inputs; [
+                # my-input.nixosModules.my-module
+            ];
+
+            # If you wanted to configure a Darwin (macOS) system.
+            # systems.modules.darwin = with inputs; [
+            #   my-input.darwinModules.my-module
+            # ];
+
+            # Add a module to a specific host.
+            systems.hosts.my-host.modules = with inputs; [
+                # my-input.nixosModules.my-module
+            ];
+
+            # Add a custom value to `specialArgs`.
+            system.hosts.my-host.specialArgs = {
+                my-custom-value = "my-value";
+            };
+        };
+}
+```

@@ -5,7 +5,8 @@ description: Creating a Nix library with Snowfall Lib.
 
 Snowfall Lib automatically passes your merged library to all other parts of your flake. This
 means that you can access your own library with `lib.my-namespace` or any library from your
-flake inputs with `lib.my-input`.
+flake inputs with `lib.my-input`. The namespace for your library and packages can be configured
+with [`snowfall.namespace`](/reference/lib#snowfall-configuration).
 
 To create a library, add a new directory to your `lib` directory or use the base `lib` directory.
 

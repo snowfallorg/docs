@@ -46,3 +46,43 @@ Now create the Nix file for the home at `homes/x86_64-linux/user@my-home/default
 
 This home will be made available on your flake’s `homeConfigurations` output with the same
 name as the directory that you created.
+
+Homes can have additional `specialArgs` and `modules` configured within your call to `mkFlake`.
+See the following for an example which adds a Home Manager module to a specific host and sets a
+custom value in `specialArgs`.
+
+```nix
+{
+	description = "My Flake";
+
+	inputs = {
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+
+		snowfall-lib = {
+			url = "github:snowfallorg/lib";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+	};
+
+	outputs = inputs:
+        inputs.snowfall-lib.mkFlake {
+            inherit inputs;
+            src = ./.;
+
+            # Add modules to all homes.
+            homes.modules = with inputs; [
+                # my-input.homeModules.my-module
+            ];
+
+            # Add modules to a specific home.
+            homes.users."my-user@my-host".modules = with inputs; [
+                # my-input.homeModules.my-module
+            ];
+
+            # Add modules to a specific home.
+            homes.users."my-user@my-host".specialArgs = {
+                my-custom-value = "my-value";
+            };
+        };
+}
+```
