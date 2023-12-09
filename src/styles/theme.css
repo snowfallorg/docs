@@ -1,4 +1,6 @@
 :root {
+  --sl-font: 'Nunito', sans-serif;
+
   --nord0: #2e3440;
   --nord1: #3b4252;
   --nord2: #434c5e;
@@ -49,7 +51,7 @@
   --sl-color-bg-nav: var(--background-elevated);
 }
 
-:root[data-theme="light"] {
+:root[data-theme='light'] {
   --text: var(--nord0);
   --background: var(--nord6);
   --background-elevated: white;
@@ -60,6 +62,17 @@
   --sl-color-blue-low: var(--nord10);
   --sl-color-bg-nav: var(--background-elevated);
   --sl-color-asides-text-accent: var(--primary-text);
+  --sl-color-white: var(--nord0);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a.action {
+  line-height: 1 !important;
 }
 
 .primary {
@@ -86,4 +99,43 @@
 nav > starlight-menu-button > button {
   background-color: var(--background-elevated) !important;
   box-shadow: none !important;
+}
+
+.hero img {
+  display: block;
+  position: relative;
+  border-radius: 2rem;
+}
+
+.hero .action.primary {
+  font-weight: bold;
+}
+
+header,
+header span,
+header a,
+header button,
+header svg,
+header select {
+  color: var(--nord6) !important;
+  background: var(--nord0) !important;
+}
+
+header dialog button {
+  color: var(--text) !important;
+  background: var(--background) !important;
+}
+
+header {
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+.pagefind-ui__result-link {
+  color: var(--text) !important;
+  background: transparent !important;
+}
+
+.pagefind-ui__search-clear {
+  background: transparent !important;
 }

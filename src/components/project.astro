@@ -1,0 +1,156 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+
+export interface Props {
+	name: string;
+	description: string;
+	docs?: string;
+	source?: string;
+	icon?: string;
+}
+
+const { name, description, icon, docs, source } = Astro.props;
+---
+
+<div class="project">
+	<div class="project__wrapper">
+		{icon ? <div class="project__left"> <img src={icon} alt={name} class="project__icon" /> </div> : null }
+		<div class="project__right">
+			<h3 class="project__name">{name}</h3>
+			<p class="project__description">{description}</p>
+			{docs || source ?
+				<div class="project__links">
+				{source ? <a href={source} target="_blank" rel="noopener noreferrer" class="action primary project__link project__link--source">Source <Icon name="github" color="currentColor" /></a> : null }
+				{docs ? <a href={docs} class="project__link project__link--docs">Documentation <Icon name="open-book" color="currentColor" /></a> : null }
+				</div>
+				: null
+			}
+		</div>
+	</div>
+</div>
+
+<style>
+.project {
+	display: flex;
+	margin: 0 auto;
+	gap: 1rem;
+	position: relative;
+	opacity: 0.99;
+	isolation: isolate;
+	justify-content: center;
+}
+
+.project__wrapper {
+	position: relative;
+	width: 100%;
+	max-width: 600px;
+}
+
+.project:not(:last-of-type) {
+	margin-bottom: 4rem;
+}
+
+.project__left {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: -1;
+}
+
+.project__left::after {
+	position: absolute;
+	content: '';
+	display: block;
+	top: 0rem;
+	left: 0rem;
+	width: 6rem;
+	height: 6rem;
+	border-radius: 1rem;
+	box-shadow:
+		inset 0 0 28px -5px var(--nord0),
+		inset 0 0 10px -6px var(--nord0)
+	;
+}
+
+.project__icon {
+	width: 6rem;
+	height: 6rem;
+	border-radius: 1rem;
+}
+
+.project .project__right {
+	margin-top: 0;
+}
+
+.project__left + .project__right {
+}
+
+.project__left + .project__right .project__name {
+	padding-top: 3rem;
+	padding-left: 4.25rem;
+}
+
+.project__left + .project__right .project__description {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+
+.project .project__name {
+	--text-outline-size: 2px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-size: 7.5rem;
+	font-weight: bold;
+	line-height: 1;
+	text-shadow:
+		var(--text-outline-size) var(--text-outline-size) 0 var(--background),
+		var(--text-outline-size) calc(var(--text-outline-size) * -1) 0 var(--background),
+		calc(var(--text-outline-size) * -1) var(--text-outline-size) 0 var(--background),
+		calc(var(--text-outline-size) * -1) calc(var(--text-outline-size) * -1) 0 var(--background)
+		;
+}
+
+.project .project__description {
+	margin-top: 0;
+	font-size: 1.25rem;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+	max-width: 50ch !important;
+}
+
+.project .project__links {
+	display: flex;
+	gap: 0.5rem;
+	padding-left: 1rem;
+	margin-top: 0.5rem;
+}
+
+.project .project__link {
+	display: inline-flex;
+	gap: 1rem;
+	line-height: 1;
+	padding: 1rem 1.25rem;
+	font-weight: bold;
+	border-radius: 9999px;
+	text-decoration: none;
+	color: var(--primary-text) !important;
+	background: var(--primary);
+}
+
+.project .project__link.project__link--source {
+	color: var(--background) !important;
+	background: var(--text) !important;
+}
+
+.project .project__link.project__link--docs {
+}
+
+@media screen and (max-width: 480px) {
+	.project .project__name {
+		margin-top: 1rem;
+		font-size: 4rem;
+	}
+}
+</style>

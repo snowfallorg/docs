@@ -2,52 +2,43 @@
 title: Snowfall
 description: Making Nix better one project at a time.
 template: splash
-hero:
-  tagline: Making Nix better one project at a time.
-
-  # TODO: Add an image once we have a proper Snowfall mascot.
-  # image:
-  #   file: ../../assets/logo.svg
-  actions:
-    - text: Get Started
-      link: /guides/lib/quickstart
-      icon: right-arrow
-      variant: primary
 ---
 
 import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
+import Hero from "../../components/hero.astro";
+import Project from "../../components/project.astro";
 
-## Documentation
+<Hero />
 
-<CardGrid>
-  <LinkCard
-    title="Lib"
-    description="Unified configuration for systems, packages, modules, shells, templates, and more with Nix Flakes."
-    href="/guides/lib/quickstart"
-  />
-</CardGrid>
+<Project
+	name="Lib"
+	description="Unified configuration for systems, packages, modules, shells, templates, and more with Nix Flakes."
+	icon="/icons/lib.jpg"
+	source="https://github.com/snowfallorg/lib"
+	docs="/guides/lib/quickstart"
+/>
 
-## Projects
+<Project
+	name="Flake"
+	description="Simplify Nix Flakes on the command line."
+	icon="/icons/flake.jpg"
+	source="https://github.com/snowfallorg/flake"
+/>
+<Project
+	name="Thaw"
+	description="SemVer for Nix Flakes."
+	icon="/icons/thaw.jpg"
+	source="https://github.com/snowfallorg/thaw"
+/>
+<Project
+	name="Icehouse"
+	description="Cold storage made easy."
+	icon="/icons/icehouse.jpg"
+	source="https://github.com/snowfallorg/icehouse"
+/>
 
-<CardGrid>
-  <LinkCard
-    title="Lib"
-    description="Unified configuration for systems, packages, modules, shells, templates, and more with Nix Flakes."
-    href="https://github.com/snowfallorg/lib"
-  />
-  <LinkCard
-    title="Flake"
-    description="Simplify Nix Flakes on the command line."
-    href="https://github.com/snowfallorg/flake"
-  />
-  <LinkCard
-    title="Frost"
-    description="Generate documentation for Nix Flakes."
-    href="https://github.com/snowfallorg/frost"
-  />
-  <LinkCard
-    title="Icehouse"
-    description="Cold storage made easy."
-    href="https://github.com/snowfallorg/icehouse"
-  />
-</CardGrid>
+<style>{`
+	#_top {
+		display: none;
+	}
+`}</style>
