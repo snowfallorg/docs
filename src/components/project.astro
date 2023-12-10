@@ -43,7 +43,7 @@ const { name, description, icon, docs, source } = Astro.props;
 .project__wrapper {
 	position: relative;
 	width: 100%;
-	max-width: 600px;
+	max-width: 700px;
 }
 
 .project:not(:last-of-type) {
@@ -147,11 +147,19 @@ const { name, description, icon, docs, source } = Astro.props;
 .project .project__link.project__link--docs {
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 660px) {
 	.project .project__name {
 		--text-outline-size: 1px;
 		margin-top: 1rem;
 		font-size: 4rem;
+	}
+}
+
+@media screen and (max-width: 410px) {
+	.project .project__name {
+		--text-outline-size: 1px;
+		margin-top: 1rem;
+		font-size: 3rem;
 	}
 }
 </style>
