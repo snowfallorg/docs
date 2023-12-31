@@ -68,7 +68,7 @@ flake's inputs.
 ## Configure Snowfall Lib
 
 Snowfall Lib offers some customization options. The following example details a few
-popular settings. For a full list see [Snowfall Lib Reference](/docs/reference/lib).
+popular settings. For a full list see [Snowfall Lib Reference](/reference/lib).
 
 ```nix
 {
