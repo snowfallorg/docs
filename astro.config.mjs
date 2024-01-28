@@ -31,6 +31,7 @@ export default defineConfig({
                 { label: "Library", link: "/guides/lib/library/" },
                 { label: "Shells", link: "/guides/lib/shells/" },
                 { label: "Generic", link: "/guides/lib/generic/" },
+                { label: "Channels", link: "/guides/lib/channels/" },
               ],
             },
             { label: "Reference", link: "/reference/lib/" },
