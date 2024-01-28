@@ -4,11 +4,22 @@ description: Making Nix better one project at a time.
 template: splash
 ---
 
-import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
+import { Card, CardGrid, LinkCard, Icon } from "@astrojs/starlight/components";
 import Hero from "../../components/hero.astro";
 import Project from "../../components/project.astro";
+import Announcement from "../../components/announcement.astro";
+import LinkButton from "../../components/linkbutton.astro";
 
 <Hero />
+
+<Announcement id="announcement--snowflakeos">
+	<div>	
+		🎉 SnowflakeOS&nbsp;has joined&nbsp;Snowfall! 🎉
+	</div>
+	<LinkButton href="https://snowflakeos.org" target="_blank" rel="noopener noreferrer">
+		<span class="snowflakeos-link__content"> Get SnowflakeOS <Icon name="right-arrow" size="1.5rem" /> </span>
+	</LinkButton>
+</Announcement>
 
 <Project
 	name="Lib"
@@ -24,18 +35,21 @@ import Project from "../../components/project.astro";
 	icon="/icons/flake.jpg"
 	source="https://github.com/snowfallorg/flake"
 />
+
+<Project
+	name="Icicle"
+	description="A gtk4/libadwaita installer for NixOS based distributions."
+	icon="/icons/icicle.jpg"
+	source="https://github.com/snowfallorg/icicle"
+/>
+
 <Project
 	name="Thaw"
 	description="SemVer for Nix Flakes."
 	icon="/icons/thaw.jpg"
 	source="https://github.com/snowfallorg/thaw"
 />
-<Project
-	name="Ice House"
-	description="Cold storage made easy."
-	icon="/icons/icehouse.jpg"
-	source="https://github.com/snowfallorg/icehouse"
-/>
+
 <Project
 	name="Drift"
 	description="Update Nix Flake package sources."
@@ -43,8 +57,32 @@ import Project from "../../components/project.astro";
 	source="https://github.com/snowfallorg/drift"
 />
 
+<Project
+	name="Ice House"
+	description="Cold storage made easy."
+	icon="/icons/icehouse.jpg"
+	source="https://github.com/snowfallorg/icehouse"
+/>
+
 <style>{`
 	#_top {
 		display: none;
+	}
+
+	#announcement--snowflakeos {
+		margin-top: -1rem;
+		margin-bottom: 2rem;
+	}
+
+	#announcement--snowflakeos * {
+		gap: 1rem;
+	}
+
+	.snowflakeos-link__content {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 0.5rem;
 	}
 `}</style>

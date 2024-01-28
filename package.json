@@ -10,9 +10,9 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/starlight": "^0.15.0",
+		"@astrojs/starlight": "0.17.0",
 		"@fontsource/nunito": "^5.0.16",
-		"astro": "^4.0.3"
+		"astro": "4.2.6"
 	},
 	"devDependencies": {
 		"sharp": "^0.33.0"

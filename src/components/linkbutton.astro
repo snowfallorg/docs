@@ -1,0 +1,26 @@
+---
+export interface Props {
+	href: string;
+}
+
+const { href, ...props } = Astro.props;
+---
+
+<a {...props} class={`linkbutton ${props.class ?? ''}`} href={href}>
+	<slot></slot>
+</a>
+
+<style>
+	.linkbutton {
+		display: inline-flex;
+		flex-direction: row;
+		gap: 1rem;
+		line-height: 1;
+		padding: 1rem 1.25rem;
+		font-weight: bold;
+		border-radius: 9999px;
+		text-decoration: none;
+		color: var(--primary-text) !important;
+		background: var(--primary);
+	}
+</style>

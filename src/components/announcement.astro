@@ -1,0 +1,37 @@
+---
+export interface Props {
+
+}
+---
+
+<div class="announcement" {...Astro.props}>
+	<div class="announcement__content">
+		<slot></slot>
+	</div>
+</div>
+
+<style>
+.announcement {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.announcement__content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex: 1;
+	padding: 1rem;
+	font-size: 1.25rem;
+	border-radius: 0.5rem;
+}
+</style>
