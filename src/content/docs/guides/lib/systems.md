@@ -86,7 +86,7 @@ custom value in `specialArgs`.
             ];
 
             # Add a custom value to `specialArgs`.
-            system.hosts.my-host.specialArgs = {
+            systems.hosts.my-host.specialArgs = {
                 my-custom-value = "my-value";
             };
         };
