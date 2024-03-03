@@ -1209,7 +1209,7 @@ is-linux "x86_64-linux"
 Result:
 
 ```nix
-false
+true
 ```
 
 #### `lib.snowfall.system.is-virtual`
