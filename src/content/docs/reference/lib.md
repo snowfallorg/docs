@@ -1,6 +1,8 @@
 ---
 title: Lib
 description: Reference for Snowfall Lib.
+tableOfContents:
+  maxHeadingLevel: 4
 ---
 
 ## Usage
