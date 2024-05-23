@@ -20,7 +20,7 @@ library instance with `mkLib`.
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -251,7 +251,7 @@ packages, overlays, and shells specified by the [Flake Structure](#flake-structu
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -284,7 +284,7 @@ the `snowfall` attribute passed to `mkLib`.
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -326,7 +326,7 @@ You can apply overlays and modules from your flake's inputs with the following o
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -395,7 +395,7 @@ on `pkgs` and consumers of your flake can use the generated `<your-flake>.overla
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -423,7 +423,7 @@ on `pkgs` and consumers of your flake can use the generated `<your-flake>.overla
 				# Optionally place all packages under a namespace when used in an overlay.
 				# Instead of accessing packages with `pkgs.<name>`, your internal packages
 				# will be available at `pkgs.<namespace>.<name>`.
-				package-namespace = "my-namespace";
+				snowfall.namespace = "my-namespace";
 
 				# You can also pass through external packages or dynamically create new ones
 				# in addition to the ones that `lib` will create from your `packages/` directory.
@@ -448,7 +448,7 @@ mapping the `default` package or shell to the name of the one you want.
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -477,8 +477,14 @@ mapping the `default` package or shell to the name of the one you want.
 						default = "my-shell";
 					};
 
+					checks = {
+						default = "my-check";
+					};
+
 					modules = {
-						default = "my-module";
+						nixos.default = "my-nixos-module";
+						darwin.default = "my-darwin-module";
+						home.default = "my-home-module";
 					};
 
 					templates = {
@@ -500,7 +506,7 @@ include `darwin` and/or `nixos-generators` as inputs.
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -583,7 +589,7 @@ your flake must include `home-manager` as an input.
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -1525,7 +1531,7 @@ Type: `Attrs -> Attrs -> [(a -> b -> c)]`
 Usage:
 
 ```nix
-create-overlays-builder { src = ./my-overlays; package-namespace = "my-packages"; extra-overlays = []; }
+create-overlays-builder { src = ./my-overlays; namespace = "my-namespace"; extra-overlays = []; }
 ```
 
 Result:
@@ -1546,7 +1552,7 @@ Usage:
 create-overlays {
 	src = ./my-overlays;
 	packages-src = ./my-packages;
-	package-namespace = "my-namespace";
+	namespace = "my-namespace";
 	extra-overlays = {
 		my-example = final: prev: {};
 	};

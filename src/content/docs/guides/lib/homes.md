@@ -29,6 +29,7 @@ Now create the Nix file for the home at `homes/x86_64-linux/user@my-home/default
     inputs,
 
     # Additional metadata is provided by Snowfall Lib.
+    namespace, # The namespace used for your flake, defaulting to "internal" if not set.
     home, # The home architecture for this host (eg. `x86_64-linux`).
     target, # The Snowfall Lib target for this home (eg. `x86_64-home`).
     format, # A normalized name for the home target (eg. `home`).
@@ -56,7 +57,7 @@ custom value in `specialArgs`.
 	description = "My Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
 		snowfall-lib = {
 			url = "github:snowfallorg/lib";
@@ -84,5 +85,64 @@ custom value in `specialArgs`.
                 my-custom-value = "my-value";
             };
         };
+}
+```
+
+## Options
+
+For convenience, Snowfall Lib adds an additional set of configuration with context about
+the current user. These values can be used to avoid having to hard code them or duplicate
+the things that Snowfall Lib already knows about.
+
+### `snowfallorg.user.enable`
+
+This option determines whether the user's common, required options are automatically set.
+The default value is `false` when used outside of Snowfall Lib, but is set to true when
+you use a system or home created by Snowfall Lib.
+
+Type: `Boolean`
+
+Default: `false` (unless used in a system or home created by Snowfall Lib)
+
+Example:
+
+```nix
+{
+    snowfallorg.user.enable = true;
+}
+```
+
+### `snowfallorg.user.name`
+
+The name of the user. This value is provided to home-manager's `home.username` option during
+automatic configuration. This option does not have a default value, but one is set automatically
+by Snowfall Lib for each user. Most commonly this value can be accessed by other modules with
+`config.snowfallorg.user.name` to get the current user's name;
+
+Type: `String`
+
+Example:
+
+```nix
+{
+    snowfallorg.user.name = "my-user";
+}
+```
+
+### `snowfallorg.user.home`
+
+By default, the user's home directory will be calculated based on the platform and provided
+username. However, this can still be customized if your user's home directory is in a
+non-standard location.
+
+Type: `String`
+
+Default: `/home/${config.snowfallorg.user.name}` (Linux), `/Users/${config.snowfallorg.user.name}` (macOS)
+
+Example:
+
+```nix
+{
+    snowfallorg.user.home = "/mnt/home/my-user";
 }
 ```
