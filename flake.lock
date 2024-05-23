@@ -92,6 +92,7 @@
       },
       "original": {
         "owner": "snowfallorg",
+        "ref": "v3.0.0",
         "repo": "lib",
         "type": "github"
       }
