@@ -24,7 +24,7 @@ flake's inputs.
 ```nix
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
         # The name "snowfall-lib" is required due to how Snowfall Lib processes your
         # flake's inputs.
@@ -44,7 +44,7 @@ flake's inputs.
 ```nix
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
         snowfall-lib = {
             url = "github:snowfallorg/lib";
@@ -73,7 +73,7 @@ popular settings. For a full list see [Snowfall Lib Reference](/reference/lib).
 ```nix
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
         snowfall-lib = {
             url = "github:snowfallorg/lib";

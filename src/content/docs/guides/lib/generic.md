@@ -16,7 +16,7 @@ supported system.
 ```nix
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
         snowfall-lib = {
             url = "github:snowfallorg/lib";
@@ -54,7 +54,7 @@ the same names as the attributes you add.
 ```nix
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
         snowfall-lib = {
             url = "github:snowfallorg/lib";

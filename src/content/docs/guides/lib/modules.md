@@ -33,6 +33,7 @@ Now create the Nix file for the module at `modules/nixos/my-module/default.nix`.
     inputs,
 
     # Additional metadata is provided by Snowfall Lib.
+    namespace, # The namespace used for your flake, defaulting to "internal" if not set.
     system, # The system architecture for this host (eg. `x86_64-linux`).
     target, # The Snowfall Lib target for this system (eg. `x86_64-iso`).
     format, # A normalized name for the system target (eg. `iso`).
