@@ -44,4 +44,4 @@ stdenv.mkDerivation {
 ```
 
 This package will be made available on your flake's `packages` output with the same name as the
-directory that you created.
+directory that you created (i.e. `packages.my-package`). Also, from inside a module you can reference it via `pkgs.${namespace}` (i.e. `pkgs.plusultra.my-package`).
