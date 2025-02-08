@@ -44,4 +44,11 @@ stdenv.mkDerivation {
 ```
 
 This package will be made available on your flake's `packages` output with the same name as the
-directory that you created.
+directory that you created, under your `namespace`.
+
+```nix
+# Example, to add a package named foo under namespace bar in the configuration for a home.
+home.packages = [
+    pkgs.bar.foo
+];
+```
